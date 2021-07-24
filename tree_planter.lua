@@ -147,6 +147,7 @@ end
 -- tree code starts here
 
 local n = tonumber(arg[1])
+local m = tonumber(arg[2])
 
 local f = 5
 
@@ -155,7 +156,7 @@ local alternate = true
 dXPlus(f)
 
 for i = 1, n, 1 do
-    for i = 1, n, 1 do
+    for i = 1, m, 1 do
         turtle.placeDown(1, 1)
         if i ~= n then
             if alternate then
