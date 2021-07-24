@@ -56,6 +56,10 @@ function face(direction)
     end
 end
 
+function getFacing()
+    return facing
+end
+
 function dXPlus(steps)
     face(directions.XPlus)
     steps = steps or 1
@@ -143,8 +147,10 @@ end
 -- tree code starts here
 
 local n = tonumber(arg[1])
+local clearDist = tonumber(arg[2])
+clearDist = clearDist or 0
 
-local f = 4
+local f = 5
 
 local inspected = {}
 
@@ -173,7 +179,7 @@ end
 function shouldInspect(direction, start)
     local pos = currentBlock()
     pos = nextBlockPos(pos, direction)
-    if manhattanDist(pos, start) > 2 then return false end
+    if manhattanDist(pos, start) > clearDist then return false end
     return inspected[blockToString(pos)] == nil
 end
 
@@ -233,9 +239,25 @@ function mineTree()
     if currentBlock().y > 0 then clearNearbyBranches(currentBlock()) end
 end
 
+dXPlus(f)
+
+local alternate = true
+
 for i = 1, n, 1 do
-    for i = 1, f, 1 do
-        dXPlus()
+    for i = 1, n, 1 do
         mineTree()
+        if i ~= n then
+            if alternate then
+                dXPlus(f)
+            else
+                dXMinus(f)
+            end
+        end
     end
+    alternate = not alternate
+    dZPlus(f)
 end
+
+dXMinus(currentBlock().x)
+dZMinus(currentBlock().z)
+face(directions.XPlus)
