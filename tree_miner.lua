@@ -147,7 +147,8 @@ end
 -- tree code starts here
 
 local n = tonumber(arg[1])
-local clearDist = tonumber(arg[2])
+local m = tonumber(arg[2])
+local clearDist = tonumber(arg[3])
 clearDist = clearDist or 0
 
 local f = 5
