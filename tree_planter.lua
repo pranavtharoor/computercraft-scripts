@@ -158,7 +158,7 @@ dXPlus(f)
 for i = 1, n, 1 do
     for i = 1, m, 1 do
         turtle.placeDown(1, 1)
-        if i ~= n then
+        if i ~= m then
             if alternate then
                 dXPlus(f)
             else
