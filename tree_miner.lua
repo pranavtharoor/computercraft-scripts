@@ -245,7 +245,7 @@ dXPlus(f)
 local alternate = true
 
 for i = 1, n, 1 do
-    for i = 1, n, 1 do
+    for i = 1, m, 1 do
         mineTree()
         if i ~= n then
             if alternate then
